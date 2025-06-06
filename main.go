@@ -1,11 +1,21 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 )
 
 func main() {
-	greeting := greet("en")
+	var lang string
+
+	// exmaple: go run main.go -lang=vi
+	flag.StringVar(&lang,
+		"lang",
+		"en",
+		"The required language, e.g. en, ur...")
+	flag.Parse()
+
+	greeting := greet(language(lang))
 	fmt.Println(greeting)
 }
 
